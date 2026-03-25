@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasnim • Creative Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="site-container">
+        <header class="hero-section">
+            <img src="hero.jpg" alt="AI and Creativity Concept" class="hero-image">
+        </header>
+
+        <main class="content-section">
+            <div class="glass-panel">
+                <h1 class="main-title">MY JOURNEY</h1>
+                <p class="main-text">
+                    Hi! I'm Tasnim. An APEC student exploring the intersection of IT and Artificial Intelligence. 
+                    I believe the future is built where technology meets creativity. 
+                    Welcome to my digital playground.
+                </p>
+                
+                <h2 class="sub-title">Currently Learning</h2>
+                <ul class="skills-list">
+                    <li>Creative coding & UI/UX basics</li>
+                    <li>The elegance of Physics & Math</li>
+                    <li>Mastering English language</li>
+                    <li>Python & AI concepts</li>
+                </ul>
+
+                <h2 class="sub-title">Creative Playground</h2>
+                <ul class="skills-list">
+                    <li>Graphic Design & Posters (SportFest)</li>
+                    <li>Scriptwriting & Directing Plays</li>
+                    <li>AI Image Generation</li>
+                </ul>
+
+                <div class="terminal-section">
+                    <button id="magic-btn" class="action-btn">Run System Diagnostics</button>
+                    <p id="secret-message" class="hidden-text"></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const btn = document.getElementById('magic-btn');
+        const msg = document.getElementById('secret-message');
+
+        btn.addEventListener('click', function() {
+            msg.style.display = 'block';
+            msg.style.color = '#00ffcc'; 
+            msg.style.fontFamily = '"Courier New", Courier, monospace';
+            msg.style.textAlign = 'left';
+            msg.style.marginTop = '20px';
+
+            /* ВЫВОД НОВОГО ТЕКСТА В ТЕРМИНАЛ */
+            msg.innerHTML = "> ACCESSING ROADMAP 'PROJECT LONDON'...<br>> Phase 1: Master UI/UX & Creative Coding [ACTIVE]<br>> Phase 2: Secure international scholarship [PENDING]<br>> Phase 3: Enter Creative Computing Institute [LOCKED]<br>> SYSTEM NOTE: Persistence is the ultimate algorithm.<br>> STATUS: Advancing to the next level.";
+            
+            btn.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
