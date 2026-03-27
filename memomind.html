@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoMind • App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="site-container">
+        <main class="content-section" style="margin-top: 50px;">
+            <div class="glass-panel">
+                <a href="index.html" class="back-link">← Back to Portfolio</a>
+                
+                <h1 class="main-title" style="font-size: 2.2em;">MemoMind Engine</h1>
+                <p class="main-text">
+                    Transform your chaotic, emotional thoughts into structured, professional business communication.
+                </p>
+                
+                <textarea id="memo-input" class="cyber-input" placeholder="[Input chaotic data...] e.g. Boss, I'm sick with 39 fever, can't make the 3PM meeting..."></textarea>
+                
+                <button id="memo-btn" class="action-btn">Synthesize Memo</button>
+                
+                <div id="memo-output" class="cyber-output"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const memoBtn = document.getElementById('memo-btn');
+        const memoInput = document.getElementById('memo-input');
+        const memoOutput = document.getElementById('memo-output');
+
+        memoBtn.addEventListener('click', function() {
+            if (memoInput.value.trim() === "") return;
+
+            // Текущая дата для письма (магия программирования!)
+            const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            memoBtn.style.display = 'none'; // Прячем кнопку на время загрузки
+            memoOutput.style.display = 'block';
+            memoOutput.innerHTML = "<span style='color:#00ffcc'>> SYNTHESIZING DATA... APPLYING PROFESSIONAL FILTERS...</span>";
+
+            // Имитация работы нейросети (задержка 1.5 секунды)
+            setTimeout(() => {
+                memoOutput.innerHTML = `
+<span style="color:#00b3ff; font-weight:bold;">TO:</span> [Relevant Stakeholders]<br>
+<span style="color:#00b3ff; font-weight:bold;">FROM:</span> Tasnim<br>
+<span style="color:#00b3ff; font-weight:bold;">DATE:</span> ${today}<br>
+<span style="color:#00b3ff; font-weight:bold;">SUBJECT:</span> Urgent Status Update / Action Required<br>
+<br>
+<span style="color:#00b3ff; font-weight:bold;">BODY:</span><br>
+This is an automated synthesis of the provided input. The core issue has been identified and logged. All relevant stakeholders will be informed accordingly, and alternative arrangements will be made to ensure workflow continuity.<br><br>
+<span style="color:#00ffcc; font-size:0.8em;">> SYSTEM NOTE: Memo processing complete.</span>
+                `;
+                memoBtn.style.display = 'inline-block'; // Возвращаем кнопку
+                memoBtn.innerText = "Synthesize Another Memo";
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
