@@ -17,10 +17,8 @@
                     Transform your chaotic, emotional thoughts into structured, professional business communication.
                 </p>
                 
-                <textarea id="memo-input" class="cyber-input" placeholder="[Input chaotic data...] e.g. Boss, I'm sick with 39 fever, can't make the 3PM meeting..."></textarea>
-                
+                <textarea id="memo-input" class="cyber-input" placeholder="[Input chaotic data...] e.g. Boss, I'm sick with 39 fever..."></textarea>
                 <button id="memo-btn" class="action-btn">Synthesize Memo</button>
-                
                 <div id="memo-output" class="cyber-output"></div>
             </div>
         </main>
@@ -32,28 +30,47 @@
         const memoOutput = document.getElementById('memo-output');
 
         memoBtn.addEventListener('click', function() {
-            if (memoInput.value.trim() === "") return;
+            const text = memoInput.value.trim().toLowerCase(); 
+            if (text === "") return;
 
-            // Текущая дата для письма (магия программирования!)
             const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-            memoBtn.style.display = 'none'; // Прячем кнопку на время загрузки
+            memoBtn.style.display = 'none'; 
             memoOutput.style.display = 'block';
-            memoOutput.innerHTML = "<span style='color:#00ffcc'>> SYNTHESIZING DATA... APPLYING PROFESSIONAL FILTERS...</span>";
+            memoOutput.innerHTML = "<span style='color:#00ffcc'>> ANALYZING KEYWORDS... SYNTHESIZING LOGIC...</span>";
 
-            // Имитация работы нейросети (задержка 1.5 секунды)
             setTimeout(() => {
+                let to = "[Relevant Stakeholders]";
+                let subject = "Urgent Status Update / Action Required";
+                let body = "This is an automated synthesis of the provided input. The core issue has been identified and logged. All relevant stakeholders will be informed accordingly.";
+
+                if (text.includes("sick") || text.includes("fever") || text.includes("doctor") || text.includes("ill")) {
+                    to = "HR Department / Management";
+                    subject = "Notice of Absence Due to Illness";
+                    body = "Please be advised that I am currently experiencing health issues and am unable to attend work/meetings today. I will provide a doctor's note upon my return. Please reassign my urgent tasks as necessary.";
+                } 
+                else if (text.includes("math") || text.includes("prof") || text.includes("class") || text.includes("late") || text.includes("overslept")) {
+                    to = "Professor / Course Instructor";
+                    subject = "Apology for Tardy Arrival";
+                    body = "I am writing to sincerely apologize for missing the beginning of today's lecture due to an unforeseen scheduling failure. I will be present for the remainder of the session and will catch up on all missed materials.";
+                } 
+                else if (text.includes("server") || text.includes("boss") || text.includes("clients") || text.includes("down")) {
+                    to = "IT Support / Management Team";
+                    subject = "CRITICAL: Server Outage & Client Impact";
+                    body = "We are currently experiencing a critical server outage affecting client operations. Immediate intervention is required to stabilize the system and communicate with affected clients to minimize business impact.";
+                }
+
                 memoOutput.innerHTML = `
-<span style="color:#00b3ff; font-weight:bold;">TO:</span> [Relevant Stakeholders]<br>
+<span style="color:#00b3ff; font-weight:bold;">TO:</span> ${to}<br>
 <span style="color:#00b3ff; font-weight:bold;">FROM:</span> Tasnim<br>
 <span style="color:#00b3ff; font-weight:bold;">DATE:</span> ${today}<br>
-<span style="color:#00b3ff; font-weight:bold;">SUBJECT:</span> Urgent Status Update / Action Required<br>
+<span style="color:#00b3ff; font-weight:bold;">SUBJECT:</span> ${subject}<br>
 <br>
 <span style="color:#00b3ff; font-weight:bold;">BODY:</span><br>
-This is an automated synthesis of the provided input. The core issue has been identified and logged. All relevant stakeholders will be informed accordingly, and alternative arrangements will be made to ensure workflow continuity.<br><br>
-<span style="color:#00ffcc; font-size:0.8em;">> SYSTEM NOTE: Memo processing complete.</span>
+${body}<br><br>
+<span style="color:#00ffcc; font-size:0.8em;">> SYSTEM NOTE: Contextual processing complete.</span>
                 `;
-                memoBtn.style.display = 'inline-block'; // Возвращаем кнопку
+                memoBtn.style.display = 'inline-block'; 
                 memoBtn.innerText = "Synthesize Another Memo";
             }, 1500);
         });
